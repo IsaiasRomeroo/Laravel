@@ -26,4 +26,9 @@ Route::post('/crearPremio', [PremioController::class,'crearPremio'])->middleware
 
 Route::get('/mispremios', [PremioController::class,'mispremios'])->middleware(['auth'])->name('mispremios');
 
+Route::get('/borrar/{id}', [PremioController::class,'borrarId'])->middleware(['auth'])->name('borrarId');
+
+Route::get('/modificar/{id}', [PremioController::class,'modificarId'])->middleware(['auth'])->name('modificarId');
+
+
 require __DIR__.'/auth.php';

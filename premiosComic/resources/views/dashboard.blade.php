@@ -10,7 +10,11 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                          <img width="200" height="300" src="imagenes/{{ $prm->portada }}" alt="Portada">
+                          @if($prm->portada == '')
+                            <img width="200" height="300" src="imagenes/sinimagen.png" alt="portada premio {{ $prm->anio }}">
+                        @else
+                            <img width="200" height="300" src="imagenes/{{ $prm->portada }}" alt="portada premio {{ $prm->anio }}">
+                        @endif
                      
                           <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2">{{ $prm->anio }}</div>

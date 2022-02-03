@@ -18,8 +18,13 @@
                 </div>
                    <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('crearPremio')" :active="request()->routeIs('crearPremio')">
                         {{ __('Premios Nuevo') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('mispremios')" :active="request()->routeIs('mispremios')">
+                        {{ __('Mis premios') }}
                     </x-nav-link>
                 </div>
             </div>

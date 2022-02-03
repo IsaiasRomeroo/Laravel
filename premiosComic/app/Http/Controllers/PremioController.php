@@ -30,7 +30,7 @@ class PremioController extends Controller{
        $p->anio = $datos->anio;
        $p->autor = $datos->autor;
        $p->comic = $datos->titulo;
-       $p->portada="";
+       $p->portada=$datos->portada;
        $p->user_id = Auth::User()->id;
        $p->save();
 
@@ -41,9 +41,29 @@ class PremioController extends Controller{
 
     public function mispremios(){
 
-        $premios = premio::where('user_id', Auth::User()->id)->get();
+        
+        $lp = Auth::User()->premios;
 
-        return view('/mispremios',['listaPremios' => $premios]);
+        return view('/mispremios',['listaPremios' => $lp]);
 
+    }
+    public function borrarId($id){
+    	$p= premio::find($id);
+    	if($p->user_id == Auth::User()->id){
+    		$p->delete();
+    	}
+
+    	$lp =Auth::User()->premios;
+    	return view('mispremios',['listaPremios'=>$lp]);
+
+    }
+    public function modificarId($id){
+    	$p = premio::find($id);
+    	if($p->user_id == Auth::User()->id){
+    		return view('crearPremio',['premmio'=>$p]);
+    	}else{
+    		return view('mispremios',['listaPremios'=> auth::User()->premios]);
+
+    	}
     }
 }
