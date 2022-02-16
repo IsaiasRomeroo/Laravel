@@ -24,7 +24,7 @@
                               </div>
                             <div class="px-6 pt-4 pb-2">
                               <x-button class="ml-4" onclick="window.location.href='{{ url('/borrar/'.$prm->id)}}'">{{__('Borrar')}}</x-button>
-                            <x-button class="ml-4" onclick="window.location.href='/modificar/{{ $prm->id }}'">{{__('Modificar')}}</x-button>
+                            <x-button class="ml-4" onclick="window.location.href='{{ url('/modificar/'.$prm->id )}}'">{{__('Modificar')}}</x-button>
                           </div>
                         </div>                    
                     </div>

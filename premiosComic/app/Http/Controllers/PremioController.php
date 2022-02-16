@@ -62,8 +62,23 @@ class PremioController extends Controller{
     	if($p->user_id == Auth::User()->id){
     		return view('crearPremio',['premmio'=>$p]);
     	}else{
-    		return view('mispremios',['listaPremios'=> auth::User()->premios]);
+    		return view('mispremios',['listaPremios'=> Auth::User()->premios]);
 
     	}
+
+    }
+    public function modificarEnBD(Request $datos, $id){
+      $p =premio::find($id);
+      if($p->user_id ==Auth::User()->id){
+
+      $p->comic =$datos->titulo;
+      $p->anio =$datos->anio;
+      $autor = $datos ->autor;
+
+      $p->save();
+      return redirect()->route('dashboard');
+      }else{
+        return view('listadoPremios',['listaPremios'=>Auth::User()->premios]);
+       }  
     }
 }
